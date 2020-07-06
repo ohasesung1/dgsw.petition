@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/dgsw.petition/static/css/main.c16fae73.chunk.css",
-    "main.js": "/dgsw.petition/static/js/main.313a8ee1.chunk.js",
-    "main.js.map": "/dgsw.petition/static/js/main.313a8ee1.chunk.js.map",
+    "main.js": "/dgsw.petition/static/js/main.f8538798.chunk.js",
+    "main.js.map": "/dgsw.petition/static/js/main.f8538798.chunk.js.map",
     "runtime-main.js": "/dgsw.petition/static/js/runtime-main.2086471f.js",
     "runtime-main.js.map": "/dgsw.petition/static/js/runtime-main.2086471f.js.map",
     "static/js/2.41eef89c.chunk.js": "/dgsw.petition/static/js/2.41eef89c.chunk.js",
     "static/js/2.41eef89c.chunk.js.map": "/dgsw.petition/static/js/2.41eef89c.chunk.js.map",
     "index.html": "/dgsw.petition/index.html",
-    "precache-manifest.5389f293df1b3c57516b2928a6227d3a.js": "/dgsw.petition/precache-manifest.5389f293df1b3c57516b2928a6227d3a.js",
+    "precache-manifest.41f14ab9e2b91bec3f69dd4a40ef5b9f.js": "/dgsw.petition/precache-manifest.41f14ab9e2b91bec3f69dd4a40ef5b9f.js",
     "service-worker.js": "/dgsw.petition/service-worker.js",
     "static/css/main.c16fae73.chunk.css.map": "/dgsw.petition/static/css/main.c16fae73.chunk.css.map",
     "static/js/2.41eef89c.chunk.js.LICENSE.txt": "/dgsw.petition/static/js/2.41eef89c.chunk.js.LICENSE.txt",
@@ -21,6 +21,6 @@
     "static/js/runtime-main.2086471f.js",
     "static/js/2.41eef89c.chunk.js",
     "static/css/main.c16fae73.chunk.css",
-    "static/js/main.313a8ee1.chunk.js"
+    "static/js/main.f8538798.chunk.js"
   ]
 }
