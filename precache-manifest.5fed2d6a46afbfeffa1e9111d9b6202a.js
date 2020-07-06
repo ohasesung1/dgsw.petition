@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c519a4be349c7c3ec10c5d7945b8c394",
+    "revision": "42aad92bb81f13c93d3ef499c0df29f2",
     "url": "/%7Bhttps://ohasesung1.github.io/dgsw.petition%7D/index.html"
   },
   {
-    "revision": "b9ab1010ae07e26f6872",
+    "revision": "5ac76a1a6dbe1c295ea6",
     "url": "/%7Bhttps://ohasesung1.github.io/dgsw.petition%7D/static/css/main.6d346005.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/%7Bhttps://ohasesung1.github.io/dgsw.petition%7D/static/js/2.2643e9db.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "b9ab1010ae07e26f6872",
-    "url": "/%7Bhttps://ohasesung1.github.io/dgsw.petition%7D/static/js/main.5ce6c54d.chunk.js"
+    "revision": "5ac76a1a6dbe1c295ea6",
+    "url": "/%7Bhttps://ohasesung1.github.io/dgsw.petition%7D/static/js/main.972a8ab1.chunk.js"
   },
   {
     "revision": "8d0cc07cd02a876cd0c0",
