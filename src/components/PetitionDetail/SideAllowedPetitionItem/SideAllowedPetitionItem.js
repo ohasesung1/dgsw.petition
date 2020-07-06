@@ -14,7 +14,7 @@ const SideAllowedPetitionItem = ({ item, count, history }) => {
   const handlePetitionDetail = async () => {
     localStorage.setItem("petition-idx", idx);
     // history.push('/');
-    history.push('/petition-detail');
+    history.push('/dgsw.petition/petition-detail');
   };
 
   const joinDateFormat = moment(joinDate).format('MM-DD');

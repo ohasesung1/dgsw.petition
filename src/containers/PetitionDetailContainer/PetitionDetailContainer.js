@@ -107,7 +107,7 @@ const PetitionDetailContainer = ({ store, history }) => {
               stateType: 'success',
               contents: `청원이 성공적으로 ${guideStr} 처리되었습니다.`,
             });
-            history.push('/');
+            history.push('/dgsw.petition');
           })
           .catch((error) => {
             const { status } = error.response;
@@ -166,7 +166,7 @@ const PetitionDetailContainer = ({ store, history }) => {
               stateType: 'success',
               contents: '청원이 성공적으로 삭제 되었습니다.',
             });
-            history.push('/');
+            history.push('/dgsw.petition');
           })
           .catch((error) => {
             const { status } = error.response;
@@ -207,7 +207,7 @@ const PetitionDetailContainer = ({ store, history }) => {
       return;
     }
 
-    history.push('/petition-write');
+    history.push('/dgsw.petition/petition-write');
   };
 
   const handleSideAllowedPetition = async () => {

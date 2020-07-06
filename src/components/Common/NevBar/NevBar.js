@@ -29,7 +29,7 @@ const NevBar = ({ url, store, history, isBackground }) => {
 
       ls.removeAll();
     }
-    if (propUrl === '/admin' && (token === 'empty' || userInfo.accessLevel === 2 || userInfo.accessLevel === 1)) {
+    if (propUrl === '/dgsw.petition/admin' && (token === 'empty' || userInfo.accessLevel === 2 || userInfo.accessLevel === 1)) {
       modal({
         title: 'Warning!',
         stateType: 'warning',
@@ -39,7 +39,7 @@ const NevBar = ({ url, store, history, isBackground }) => {
       return;
     }
 
-    if (propUrl === '/student-council' && (token === 'empty' || userInfo.accessLevel === 2)) {
+    if (propUrl === '/dgsw.petition/student-council' && (token === 'empty' || userInfo.accessLevel === 2)) {
       modal({
         title: 'Warning!',
         stateType: 'warning',
@@ -49,7 +49,7 @@ const NevBar = ({ url, store, history, isBackground }) => {
       return;
     }
 
-    if (propUrl === '/petition-write' && (token === 'empty')) {
+    if (propUrl === '/dgsw.petition/petition-write' && (token === 'empty')) {
       modal({
         title: 'Warning!',
         stateType: 'warning',
@@ -81,22 +81,22 @@ const NevBar = ({ url, store, history, isBackground }) => {
 
   return (
     <div className={cx('NevBarTemplate', { 'CustomMargin': isBackground === true})}>
-      <div className={cx('NevBarTemplate-mainButtonDiv')} onClick={() => handleUrl('/')}>
+      <div className={cx('NevBarTemplate-mainButtonDiv')} onClick={() => handleUrl('/dgsw.petition')}>
         <img className={cx('NevBarTemplate-mainButtonDiv-img')} src={dgswLogo}/>
       </div>
       <div className={cx('NevBarTemplate-pageButtonDiv')}>
         <div className={cx('NevBarTemplate-pageButtonDiv-buttonsDiv')}>
-          <button className={cx('NevBarTemplate-pageButtonDiv-buttonsDiv-buttons')} onClick={() => handleUrl('/petition-write')}>청원하기</button>
+          <button className={cx('NevBarTemplate-pageButtonDiv-buttonsDiv-buttons')} onClick={() => handleUrl('/dgsw.petition/petition-write')}>청원하기</button>
         </div>
         <div className={cx('NevBarTemplate-pageButtonDiv-buttonsDiv')}>
-          <button className={cx('NevBarTemplate-pageButtonDiv-buttonsDiv-buttons')} onClick={() => handleUrl('/admin')}>관리자</button>
+          <button className={cx('NevBarTemplate-pageButtonDiv-buttonsDiv-buttons')} onClick={() => handleUrl('/dgsw.petition/admin')}>관리자</button>
         </div>
         <div className={cx('NevBarTemplate-pageButtonDiv-buttonsDiv')}>
-          <button className={cx('NevBarTemplate-pageButtonDiv-buttonsDiv-buttons')} onClick={() => handleUrl('/student-council')}>학생회</button>
+          <button className={cx('NevBarTemplate-pageButtonDiv-buttonsDiv-buttons')} onClick={() => handleUrl('/dgsw.petition/student-council')}>학생회</button>
         </div>
       </div>
       <div className={cx('NevBarTemplate-loginButtonDiv')}>
-        <button className={cx('NevBarTemplate-loginButtonDiv-buttons')} onClick={() => handleUrl('/sign')}>{isLogin}</button>
+        <button className={cx('NevBarTemplate-loginButtonDiv-buttons')} onClick={() => handleUrl('/dgsw.petition/sign')}>{isLogin}</button>
       </div>
     </div>
   );

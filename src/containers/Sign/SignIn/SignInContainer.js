@@ -22,7 +22,7 @@ const SignInContainer = ({ store, history, setIsSignUp, setIsLogin }) => {
     const ls = new SecureLS({ encodingType: 'aes' });
 
     ls.removeAll();
-    history.push('/');
+    history.push('/dgsw.petition/');
     return;
   }
   
@@ -54,7 +54,7 @@ const SignInContainer = ({ store, history, setIsSignUp, setIsLogin }) => {
         const ls = new SecureLS({ encodingType: 'aes' }); // user info 저장
         ls.set('user-info', response.data.member);  // user-info라는 이름으로 저장
 
-        history.push('/');
+        history.push('/dgsw.petition/');
       })
       .catch(async (error) => {
         const { status } = error.response;

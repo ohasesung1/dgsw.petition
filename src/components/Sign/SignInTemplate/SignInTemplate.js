@@ -18,11 +18,10 @@ const SignInTemplate = ({ idObj, pwObj, userSignIn, isSesstionObj, guestLogin, s
       setIsSesstion(true);
     }
   };
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      userSignIn();
-    }
+  const handleKeyPress = event => {
+    if (event.keyCode === 13) userSignIn();
   };
+
 
   return (
     <div className={cx('SignInTemplate')}>
@@ -31,8 +30,12 @@ const SignInTemplate = ({ idObj, pwObj, userSignIn, isSesstionObj, guestLogin, s
         </div>
         <div className={cx('SignInTemplate-signInContentsBox')}>
           <div className={cx('SignInTemplate-signInContentsBox-idBox')}>
+            <input className={cx('SignInTemplate-signInContentsBox-idBox-id')} placeholder={'아이디'} value={id} onChange={(event) => setId(event.target.value)}  onKeyDown={e => handleKeyPress(e)}/>
           </div>
-          <div className={cx('SignInTemplate-signInContentsBox-checkBoxDiv')}>
+          <div className={cx('SignInTemplate-signInContentsBox-pwBox')}>
+          <input className={cx('SignInTemplate-signInContentsBox-pwBox-pw')} placeholder={'패스워드'} type={'password'} value={pw} onChange={(event) => setPw(event.target.value)}  onKeyDown={e => handleKeyPress(e)}/>
+          </div>
+            <div className={cx('SignInTemplate-signInContentsBox-checkBoxDiv')}>
             <span>로그인 유지</span>
             <input className={cx('SignInTemplate-signInContentsBox-checkBoxDiv-checkBox')}type={'checkbox'} value={isSesstion} onClick={() => isCheckSesstion()}/>
           </div>

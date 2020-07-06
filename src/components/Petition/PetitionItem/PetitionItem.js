@@ -21,7 +21,7 @@ const PetitionItem = ({ item, history, isStudent }) => {
   const handlePetitionDetail = async () => {
     localStorage.setItem("petition-idx", idx);
     
-    history.push('/petition-detail');
+    history.push('/dgsw.petition/petition-detail');
   };
 
   // 데이트 포맷
