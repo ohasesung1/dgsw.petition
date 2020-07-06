@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1dd4bdc3e7ef09003326b0979ba58c2d",
+    "revision": "433cc2117ed8d705c97cea83db59d622",
     "url": "/dgsw.petition/index.html"
   },
   {
