@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/%7Bhttps://ohasesung1.github.io/dgsw.petition%7D/static/css/main.6d346005.chunk.css",
-    "main.js": "/%7Bhttps://ohasesung1.github.io/dgsw.petition%7D/static/js/main.972a8ab1.chunk.js",
-    "main.js.map": "/%7Bhttps://ohasesung1.github.io/dgsw.petition%7D/static/js/main.972a8ab1.chunk.js.map",
-    "runtime-main.js": "/%7Bhttps://ohasesung1.github.io/dgsw.petition%7D/static/js/runtime-main.89119351.js",
-    "runtime-main.js.map": "/%7Bhttps://ohasesung1.github.io/dgsw.petition%7D/static/js/runtime-main.89119351.js.map",
-    "static/js/2.2643e9db.chunk.js": "/%7Bhttps://ohasesung1.github.io/dgsw.petition%7D/static/js/2.2643e9db.chunk.js",
-    "static/js/2.2643e9db.chunk.js.map": "/%7Bhttps://ohasesung1.github.io/dgsw.petition%7D/static/js/2.2643e9db.chunk.js.map",
-    "index.html": "/%7Bhttps://ohasesung1.github.io/dgsw.petition%7D/index.html",
-    "precache-manifest.5fed2d6a46afbfeffa1e9111d9b6202a.js": "/%7Bhttps://ohasesung1.github.io/dgsw.petition%7D/precache-manifest.5fed2d6a46afbfeffa1e9111d9b6202a.js",
-    "service-worker.js": "/%7Bhttps://ohasesung1.github.io/dgsw.petition%7D/service-worker.js",
-    "static/css/main.6d346005.chunk.css.map": "/%7Bhttps://ohasesung1.github.io/dgsw.petition%7D/static/css/main.6d346005.chunk.css.map",
-    "static/js/2.2643e9db.chunk.js.LICENSE.txt": "/%7Bhttps://ohasesung1.github.io/dgsw.petition%7D/static/js/2.2643e9db.chunk.js.LICENSE.txt",
-    "static/media/Button.scss": "/%7Bhttps://ohasesung1.github.io/dgsw.petition%7D/static/media/NotoSansKR-Thin.d238a5b5.ttf",
-    "static/media/backgroundImage2.jpg": "/%7Bhttps://ohasesung1.github.io/dgsw.petition%7D/static/media/backgroundImage2.9ac8a3cc.jpg",
-    "static/media/dgsw_logo.png": "/%7Bhttps://ohasesung1.github.io/dgsw.petition%7D/static/media/dgsw_logo.ccd810f9.png",
-    "static/media/schoolImage.jpg": "/%7Bhttps://ohasesung1.github.io/dgsw.petition%7D/static/media/schoolImage.105dcb1e.jpg"
+    "main.css": "/dgsw.petition/static/css/main.c16fae73.chunk.css",
+    "main.js": "/dgsw.petition/static/js/main.e4cfa2ee.chunk.js",
+    "main.js.map": "/dgsw.petition/static/js/main.e4cfa2ee.chunk.js.map",
+    "runtime-main.js": "/dgsw.petition/static/js/runtime-main.2086471f.js",
+    "runtime-main.js.map": "/dgsw.petition/static/js/runtime-main.2086471f.js.map",
+    "static/js/2.41eef89c.chunk.js": "/dgsw.petition/static/js/2.41eef89c.chunk.js",
+    "static/js/2.41eef89c.chunk.js.map": "/dgsw.petition/static/js/2.41eef89c.chunk.js.map",
+    "index.html": "/dgsw.petition/index.html",
+    "precache-manifest.53c31321d979c89c1faef7a6dd0f65eb.js": "/dgsw.petition/precache-manifest.53c31321d979c89c1faef7a6dd0f65eb.js",
+    "service-worker.js": "/dgsw.petition/service-worker.js",
+    "static/css/main.c16fae73.chunk.css.map": "/dgsw.petition/static/css/main.c16fae73.chunk.css.map",
+    "static/js/2.41eef89c.chunk.js.LICENSE.txt": "/dgsw.petition/static/js/2.41eef89c.chunk.js.LICENSE.txt",
+    "static/media/Button.scss": "/dgsw.petition/static/media/NotoSansKR-Thin.d238a5b5.ttf",
+    "static/media/backgroundImage2.jpg": "/dgsw.petition/static/media/backgroundImage2.9ac8a3cc.jpg",
+    "static/media/dgsw_logo.png": "/dgsw.petition/static/media/dgsw_logo.ccd810f9.png",
+    "static/media/schoolImage.jpg": "/dgsw.petition/static/media/schoolImage.105dcb1e.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.89119351.js",
-    "static/js/2.2643e9db.chunk.js",
-    "static/css/main.6d346005.chunk.css",
-    "static/js/main.972a8ab1.chunk.js"
+    "static/js/runtime-main.2086471f.js",
+    "static/js/2.41eef89c.chunk.js",
+    "static/css/main.c16fae73.chunk.css",
+    "static/js/main.e4cfa2ee.chunk.js"
   ]
 }
