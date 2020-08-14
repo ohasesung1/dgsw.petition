@@ -10,6 +10,28 @@
   background-color: white;
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.16);
 
+  &-emailCodeDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+
+    &-emailCheckIcon {
+      width: 25px;
+      height: 25px;
+      margin: 10px;
+    }
+
+    &-emailCodeInput {
+      width: 160px;
+      height: 25px;
+      outline: 0px;
+    }
+
+  }
+
   &-pwGuide {
     margin-left: 55px;
     font-size: 11px;
@@ -23,7 +45,6 @@
     justify-content: center;
     width: 100%;
     height: 100px;
-    // border: 1px solid black;
 
     &-inputDiv {
       width: 250px;
@@ -153,14 +174,17 @@
       } 
     }
     &-buttonDiv {
-      
-
+      width: 90px;
+      height: 40px;
+      margin-left: 10px;
       &-button {
+        width: 100%;
+        height: 100%;
+        border: 1px solid black;
         cursor: pointer;
         border: none;
         outline: 0px;
         font-family: $NOTO_SANS_KR_MEDIUM, $NOTO_SANS_MEDIUM;
-        height: 30px;
         color: white;
         background-color: #a5d8ff;
       }

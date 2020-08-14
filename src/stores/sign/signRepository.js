@@ -20,9 +20,18 @@ class signRepository {
     }
   }
 
-  async handelCheckId (request) {
+  async sendValidateEmail (request) {
     try {
-      const { data } = await axios.post(`${SERVER}/auth/find/id`, request);
+      const { data } = await axios.post(`${SERVER}/auth/email`, request);
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async validateEmailCode (request) {
+    try {
+      const { data } = await axios.post(`${SERVER}/auth/email/code`, request);
       return data;
     } catch (error) {
       throw error;

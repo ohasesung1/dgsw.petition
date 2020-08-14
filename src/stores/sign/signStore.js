@@ -40,9 +40,25 @@ class signStore {
   }
 
   @action
-  async handelCheckId (request) {
+  async sendValidateEmail (request) {
     try {
-      const response = await signRepository.handelCheckId(request);
+      const response = await signRepository.sendValidateEmail(request);
+
+      return new Promise((resolve, reject) => {
+        resolve(response);
+      });
+    } catch (error) {
+      console.error(error);
+
+      return new Promise((resolve, reject) => {
+        reject(error);
+      });
+    }
+  }
+
+  async validateEmailCode (request) {
+    try {
+      const response = await signRepository.validateEmailCode(request);
 
       return new Promise((resolve, reject) => {
         resolve(response);

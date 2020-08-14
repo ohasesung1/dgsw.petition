@@ -5,7 +5,7 @@ import GroupingState from 'lib/HookState/GroupingState';
 import sha512 from 'js-sha512';
 
 const SignUpContainer = ({ store, setIsSignUp, setIsLogin }) => {
-  const { handleSignUp, handelCheckId } = store.sign;
+  const { handleSignUp, sendValidateEmail, validateEmailCode } = store.sign;
   const { modal } = store.dialog;
 
   const [grade, setGrade] = useState(1);
@@ -16,8 +16,9 @@ const SignUpContainer = ({ store, setIsSignUp, setIsLogin }) => {
   const [id ,setId] = useState('');
   const [pw, setPw] = useState('');
   const [checkPw, setCheckPw] = useState('');
-  const [isCheckPw, setIsCheckPw] = useState(false);
-  const [isCheckId, setIsCheckId] = useState(false);
+  const [isSendEmail, setIsSendEmail] = useState(false);
+  const [emailCode, setEmailCode] = useState('');
+  const [isEmailValidate, setIsEmailValidate] = useState(false);
 
   const handleSignUpFunc = async () => {
     if (number === 0) {
@@ -50,11 +51,11 @@ const SignUpContainer = ({ store, setIsSignUp, setIsLogin }) => {
       return;
     }
 
-    if (!isCheckId) {
+    if (!isEmailValidate) {
       await modal({
         title: 'Warning!',
         stateType: 'warning',
-        contents: 'ID 중복 체크를 해주세요.'
+        contents: '이메일 체크를 해주세요.'
       });
 
       return;
@@ -85,12 +86,13 @@ const SignUpContainer = ({ store, setIsSignUp, setIsLogin }) => {
       return;
     }
     let data = {
-      id,
+      id: id + '@dgsw.hs.kr',
       pw: sha512(pw),
       name,
       grade,
       number,
-      studentClass
+      studentClass,
+      certification: isEmailValidate,
     };
 
     await handleSignUp(data)
@@ -210,7 +212,7 @@ const SignUpContainer = ({ store, setIsSignUp, setIsLogin }) => {
       });
   };
 
-  const idCheck = async () => {
+  const sendEmailCode = async () => {
     if (id.length === 0) {
       await modal({
         title: 'Warning!',
@@ -222,18 +224,18 @@ const SignUpContainer = ({ store, setIsSignUp, setIsLogin }) => {
     }
 
     const data = {
-      id,
+      email: id + '@dgsw.hs.kr',
     };
 
-    await handelCheckId(data).
+    await sendValidateEmail(data).
       then(async (response) => {
         await modal({
           title: 'Success',
           stateType: 'success',
-          contents: '사용 가능한 ID입니다.'
+          contents: '이메일을 보냈습니다.'
         });
 
-        setIsCheckId(true);
+        setIsSendEmail(true);
       })
       .catch(async (error) => {
         const { status } = error.response;
@@ -266,6 +268,46 @@ const SignUpContainer = ({ store, setIsSignUp, setIsLogin }) => {
       });
   };
 
+  const checkEmailCode = async () => {
+
+    let data = {
+      email: id + '@dgsw.hs.kr',
+      code: emailCode,
+    };
+
+    await validateEmailCode(data).
+      then(async (response) => {
+        await modal({
+          title: 'Success',
+          stateType: 'success',
+          contents: '이메일을 검증 성공!'
+        });
+
+        setIsEmailValidate(true);
+      })
+      .catch(async (error) => {
+        const { status } = error.response;
+
+        if (status === 403) {
+          await modal({
+            title: 'Warning!',
+            stateType: 'warning',
+            contents: '검증 실패!.'
+          });
+    
+          return;
+        } else if (status === 500) {
+          await modal({
+            title: 'Error!',
+            stateType: 'error',
+            contents: '서버 에러!'
+          });
+    
+          return;
+        }
+      });
+  };
+
   return (
     <SignUpTemplate
       idObj={GroupingState('id', id, setId)}
@@ -275,7 +317,11 @@ const SignUpContainer = ({ store, setIsSignUp, setIsLogin }) => {
       numberObj={GroupingState('number', number, setNumber)}
       studentClassObj={GroupingState('studentClass', studentClass, setStudentClass)}
       nameObj={GroupingState('name', name, setName)}
-      idCheck={idCheck}
+      emailCodeObj={GroupingState('emailCode', emailCode, setEmailCode)}
+      checkEmailCode={checkEmailCode}
+      isEmailValidate={isEmailValidate}
+      isSendEmail={isSendEmail}
+      sendEmailCode={sendEmailCode}
       handleSignUpFunc={handleSignUpFunc}
       setIsSignUp={setIsSignUp}
       setIsLogin={setIsLogin}
