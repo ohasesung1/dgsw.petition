@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8a24d60770f96ebb8eb25c2a65347dc8",
+    "revision": "6dce5aa1bad4291bc7917a7c6c1d37de",
     "url": "/dgsw.petition/index.html"
   },
   {
-    "revision": "b39a9381e277613eec4c",
-    "url": "/dgsw.petition/static/css/main.c16fae73.chunk.css"
+    "revision": "f1520640c0e33f95314b",
+    "url": "/dgsw.petition/static/css/main.a0d9e112.chunk.css"
   },
   {
-    "revision": "8180775bcfb26e255f79",
-    "url": "/dgsw.petition/static/js/2.41eef89c.chunk.js"
+    "revision": "7ef306bd3c72f17b9ffc",
+    "url": "/dgsw.petition/static/js/2.9dc03b1a.chunk.js"
   },
   {
     "revision": "2922a6766b2d158e439d4c5dadaa0e7b",
-    "url": "/dgsw.petition/static/js/2.41eef89c.chunk.js.LICENSE.txt"
+    "url": "/dgsw.petition/static/js/2.9dc03b1a.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "b39a9381e277613eec4c",
-    "url": "/dgsw.petition/static/js/main.18d9f419.chunk.js"
+    "revision": "f1520640c0e33f95314b",
+    "url": "/dgsw.petition/static/js/main.29bc84eb.chunk.js"
   },
   {
     "revision": "cce79dfee54e40fae0e7",
