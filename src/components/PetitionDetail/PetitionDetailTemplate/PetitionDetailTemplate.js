@@ -20,9 +20,8 @@ const PetitionDetailTemplate = ({ detailData,adminAuth,
     handleAllowPetition
   }) => {
 
-  const { idx, title, contents, category, joinDate, id, blind, comment, voteCount } = detailData;
-  let { isAllowed } = detailData;
-  
+  const { idx, title, contents, category, joinDate, blind, comment, voteCount } = detailData;
+  let { isAllowed, id } = detailData;
 
   const joinDateFormat = moment(joinDate).format('YYYY-MM-DD');
   
@@ -37,8 +36,10 @@ const PetitionDetailTemplate = ({ detailData,adminAuth,
     isAllowed = '승인 완료';
   }
   if (id) {
-    memberIdLength = id[0];
-    for (let i = 1; i < id.length; i++) {
+    id = id.split('@');
+    console.log(id[0].length);
+    memberIdLength = id[0][0];
+    for (let i = 1; i < id[0].length; i++) {
       memberIdLength += '*';
     };
   }

@@ -30,10 +30,10 @@ const SignInTemplate = ({ idObj, pwObj, userSignIn, isSesstionObj, guestLogin, s
         </div>
         <div className={cx('SignInTemplate-signInContentsBox')}>
           <div className={cx('SignInTemplate-signInContentsBox-idBox')}>
-            <input className={cx('SignInTemplate-signInContentsBox-idBox-id')} placeholder={'아이디'} value={id} onChange={(event) => setId(event.target.value)}  onKeyDown={e => handleKeyPress(e)}/>
+            <input className={cx('SignInTemplate-signInContentsBox-idBox-id')} placeholder={'ex)   ***@dgsw.hs.kr'} value={id} onChange={(event) => setId(event.target.value)}  onKeyDown={e => handleKeyPress(e)}/>
           </div>
           <div className={cx('SignInTemplate-signInContentsBox-pwBox')}>
-          <input className={cx('SignInTemplate-signInContentsBox-pwBox-pw')} placeholder={'패스워드'} type={'password'} value={pw} onChange={(event) => setPw(event.target.value)}  onKeyDown={e => handleKeyPress(e)}/>
+          <input className={cx('SignInTemplate-signInContentsBox-pwBox-pw')} placeholder={'password'} type={'password'} value={pw} onChange={(event) => setPw(event.target.value)}  onKeyDown={e => handleKeyPress(e)}/>
           </div>
             <div className={cx('SignInTemplate-signInContentsBox-checkBoxDiv')}>
             <span>로그인 유지</span>
