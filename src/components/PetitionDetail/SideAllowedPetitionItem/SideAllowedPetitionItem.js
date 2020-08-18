@@ -9,15 +9,13 @@ const cx = classNames.bind(style);
 
 const SideAllowedPetitionItem = ({ item, count, history }) => {
   
-  const { idx, title, joinDate } = item;
+  const { idx, title } = item;
   
   const handlePetitionDetail = async () => {
     localStorage.setItem("petition-idx", idx);
     // history.push('/');
     history.push('/dgsw.petition/petition-detail');
   };
-
-  const joinDateFormat = moment(joinDate).format('MM-DD');
   
   return (
     <div className={cx('SideAllowedPetitionItem')} onClick={() => handlePetitionDetail()}>

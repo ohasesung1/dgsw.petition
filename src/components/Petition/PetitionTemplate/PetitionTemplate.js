@@ -62,10 +62,10 @@ const PetitionTemplate = ({
           최신 순 청원 보기
         </div>
         <div className={cx('isAllowedSelectDiv-notAllowedSelectDiv', { 'isAllowedSelectDiv-notAllowedSelectDiv-style': type === '승인 대기 중인' })}  onClick={() => handlePetitionType('not_allowed')}>
-          승인 대기 중인 청원 보기
+          답변 대기 중인 청원 보기
         </div>
         <div className={cx('isAllowedSelectDiv-allowedSelectDiv', { 'isAllowedSelectDiv-orderPetitionSelectDiv-style': type === '승인된' })}  onClick={() => handlePetitionType('allowed')}>
-          승인된 청원 보기
+          답변된 청원 보기
         </div>
         <div className={cx('isAllowedSelectDiv-orderPetitionSelectDiv', { 'isAllowedSelectDiv-orderPetitionSelectDiv-style': type === '투표 순' })}  onClick={() => handlePetitionType('vote_order')}>
           투표 순 청원 보기

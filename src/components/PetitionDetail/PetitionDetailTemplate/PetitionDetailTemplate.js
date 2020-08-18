@@ -10,44 +10,53 @@ import PetitionCommentItem from 'components/PetitionDetail/PetitionCommentItem/P
 
 const cx = classNames.bind(style);
 
-const PetitionDetailTemplate = ({ detailData,adminAuth,
+const PetitionDetailTemplate = ({ 
+    detailData,
+    adminAuth,
     commentContentsObj,
     handlePetitionDelete,
     handleWriteCommentFunc, 
     handleWritePagePath,
     sideAllowedPetition,
     handleBlindPetition,
-    handleAllowPetition
+    handleAnswerPetition,
+    answerContentsObj,
+    handleAnswerPetitionUpdate
   }) => {
 
-  const { idx, title, contents, category, joinDate, blind, comment, voteCount } = detailData;
+  const { idx, title, contents, category, joinDate, blind, comment, voteCount, answer } = detailData;
   let { isAllowed, id } = detailData;
 
   const joinDateFormat = moment(joinDate).format('YYYY-MM-DD');
   
   const { commentContents, setCommentContents } = commentContentsObj;
+  const { answerContents, setAnswerContents } = answerContentsObj;
   const [commentArray, setCommentArray] = useState([]);
 
   let memberIdLength;
   
   if (isAllowed === 0) {
-    isAllowed = '승인 대기 중';
+    isAllowed = '답변 대기 중';
   } else if (isAllowed === 1) {
-    isAllowed = '승인 완료';
+    isAllowed = '답변 완료';
   }
   if (id) {
     id = id.split('@');
-    console.log(id[0].length);
     memberIdLength = id[0][0];
     for (let i = 1; i < id[0].length; i++) {
       memberIdLength += '*';
     };
   }
+
 useEffect(() => {
   if (comment) {
     setCommentArray(comment.map((item) => <PetitionCommentItem key={item.idx} item={item}/>));
   }
-}, [comment]);
+
+  if (answer) {
+    setAnswerContents(answer.contents);
+  }
+}, [comment, answer]);
   
   return (
     <div className={cx('PetitionDetailTemplate')}>
@@ -86,15 +95,15 @@ useEffect(() => {
               </div>
               <div className={cx('PetitionDetailTemplate-contentsDiv-titleDiv-statusDiv-graph-start')}>
               <div className={cx('PetitionDetailTemplate-contentsDiv-titleDiv-statusDiv-graph-start-iconDiv')}>
-                  <BsFillCircleFill className={cx('PetitionDetailTemplate-contentsDiv-titleDiv-statusDiv-graph-start-iconDiv-icon', {'statusColor': isAllowed === '승인 대기 중'})}/>
+                  <BsFillCircleFill className={cx('PetitionDetailTemplate-contentsDiv-titleDiv-statusDiv-graph-start-iconDiv-icon', {'statusColor': isAllowed === '답변 대기 중'})}/>
                 </div>
-                <span>승인 대기 중</span>
+                <span>답변 대기 중</span>
               </div>
               <div className={cx('PetitionDetailTemplate-contentsDiv-titleDiv-statusDiv-graph-start')}>
               <div className={cx('PetitionDetailTemplate-contentsDiv-titleDiv-statusDiv-graph-start-iconDiv')}>
-                  <BsFillCircleFill className={cx('PetitionDetailTemplate-contentsDiv-titleDiv-statusDiv-graph-start-iconDiv-icon', {'statusColor': isAllowed === '승인 완료'})}/>
+                  <BsFillCircleFill className={cx('PetitionDetailTemplate-contentsDiv-titleDiv-statusDiv-graph-start-iconDiv-icon', {'statusColor': isAllowed === '답변 완료'})}/>
                 </div>
-                <span>승인 완료</span>
+                <span>답변 완료</span>
               </div>
             </div>
           </div>
@@ -102,9 +111,53 @@ useEffect(() => {
             <span>청원 내용</span>
           </div>
         </div>
-        <div className={cx('PetitionDetailTemplate-contentsDiv-contentsBox')}>
+        <pre className={cx('PetitionDetailTemplate-contentsDiv-contentsBox')}>
           {contents}
-      </div>
+        </pre>
+        {
+          adminAuth && !answer?
+          <>
+            <div className={cx('PetitionDetailTemplate-answerFormWrap')}>
+              <div className={cx('PetitionDetailTemplate-answerFormWrap-answerFormHeader')}>
+                청원 답변 하기
+              </div>
+              <textarea className={cx('PetitionDetailTemplate-answerFormWrap-answerInput')} value={answerContents} onChange={(e) => setAnswerContents(e.target.value)}/>
+              <div className={cx('PetitionDetailTemplate-bannerDiv-adminButtonsDiv')}>
+                <button className={cx('PetitionDetailTemplate-bannerDiv-adminButtonsDiv-allowButton')} onClick={() => handleAnswerPetition(idx)}>청원 답변 하기</button>
+              </div>
+            </div>
+          </>
+          : <>
+            { adminAuth && answer ?
+              <div className={cx('PetitionDetailTemplate-answerFormWrap')}>
+                <div className={cx('PetitionDetailTemplate-answerFormWrap-answerFormHeader')}>
+                  청원 답변 수정
+                </div>
+                <textarea className={cx('PetitionDetailTemplate-answerFormWrap-answerInput')} value={answerContents} onChange={(e) => setAnswerContents(e.target.value)}/>
+                <div className={cx('PetitionDetailTemplate-bannerDiv-adminButtonsDiv')}>
+                    <button className={cx('PetitionDetailTemplate-bannerDiv-adminButtonsDiv-allowButton')} onClick={() => handleAnswerPetitionUpdate(idx)}>청원 답변 수정 하기</button>
+                </div>
+              </div>
+            : <>
+              {
+                <>
+                { answer ?
+                <>
+                  <div className={cx('PetitionDetailTemplate-answerFormWrap')}>
+                    <div className={cx('PetitionDetailTemplate-answerFormWrap-answerFormHeader')}>
+                      청원 답변
+                    </div>
+                    <div className={cx('PetitionDetailTemplate-answerFormWrap-answerInput')}>{answer.contents}</div>
+                  </div>
+                </>
+                : <></>
+                }
+              </>
+              }
+            </>
+            }
+          </>
+        }
         <div className={cx('PetitionDetailTemplate-contentsDiv-commentDiv')}>
           <div className={cx('PetitionDetailTemplate-contentsDiv-commentDiv-titleDiv')}>
             <div className={cx('PetitionDetailTemplate-contentsDiv-commentDiv-titleDiv-title')}>
@@ -141,16 +194,13 @@ useEffect(() => {
         </div>
         <div className={cx('PetitionDetailTemplate-bannerDiv-allowedPetitionDiv')}>
           <div className={cx('PetitionDetailTemplate-bannerDiv-allowedPetitionDiv-title')}>
-            <span>승인된 청원</span>
+            <span>답변된 청원</span>
           </div>
           {sideAllowedPetition}
         </div>
         {
           adminAuth ?
           <>
-            <div className={cx('PetitionDetailTemplate-bannerDiv-adminButtonsDiv')}>
-              <button className={cx('PetitionDetailTemplate-bannerDiv-adminButtonsDiv-allowButton')} onClick={() => handleAllowPetition(idx)}>청원 승인</button>
-            </div>
             <div className={cx('PetitionDetailTemplate-bannerDiv-adminButtonsDiv')}>
               <div className={cx('PetitionDetailTemplate-bannerDiv-adminButtonsDiv-deleteButtonDiv')}>
                 <button className={cx('PetitionDetailTemplate-bannerDiv-adminButtonsDiv-deleteButtonDiv-deleteButton')} onClick={() => handlePetitionDelete(idx)}>청원 삭제</button>
@@ -166,7 +216,6 @@ useEffect(() => {
               </div>
               : <></>
             }
-
             </>
             : <></>
         }

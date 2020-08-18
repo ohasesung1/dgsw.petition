@@ -112,14 +112,15 @@ const PetitionWriteContainer = ({ store, history }) => {
     };
 
     await writePetition(data)
-      .then((response) => {
+      .then( (response) => {
         modal({
           title: 'Success!',
           stateType: 'success',
           contents: '청원이 성공적으로 등록 되었습니다.',
-          closeFunc: () => { 
+          closeFunc: async () => {
+            await setIsConfirmed(true);
             setIsUploadPetition(false);
-            history.goBack(1); 
+            history.push('/dgsw.petition'); 
           }
         });
       })

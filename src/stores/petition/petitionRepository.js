@@ -77,11 +77,11 @@ class petitionRepository {
     }
   }
 
-  async allowPetition (request) {//  청원 승인 요청 함수
+  async answerToPetition (request) {//  청원 승인 요청 함수
     const token = TokenVerification() === 'localT' ? localStorage.getItem('petition-token') : sessionStorage.getItem('petition-token'); 
 
     try {
-      const { data } = await axios.post(`${SERVER}/petition/allow`, request, {
+      const { data } = await axios.post(`${SERVER}/petition/answer`, request, {
         headers: {
           'x-access-token' : token,
         }
@@ -128,6 +128,22 @@ class petitionRepository {
 
     try {
       const { data } = await axios.post(`${SERVER}/petition/`, request, {
+        headers: {
+          'x-access-token' : token,
+        },
+      });
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async updatePetitionAnswer (request) { // 청원 답변 수정 요청 함수
+    // 토큰 가져오기
+    const token = TokenVerification() === 'localT' ? localStorage.getItem('petition-token') : sessionStorage.getItem('petition-token'); 
+
+    try {
+      const { data } = await axios.put(`${SERVER}/petition/answer`, request, {
         headers: {
           'x-access-token' : token,
         },

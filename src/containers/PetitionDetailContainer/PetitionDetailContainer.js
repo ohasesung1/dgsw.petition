@@ -10,11 +10,12 @@ import GroupingState from 'lib/HookState/GroupingState';
 import TokenVerification from 'lib/Token/TokenVerification';
 
 const PetitionDetailContainer = ({ store, history }) => {
-  const { getPetitionDetail, PetitionDetailData, deletePetition, allowPetition, blindPetition, writePetitionComment, getPetitionFeed, allowedPetitions} = store.petitionStore;
-  // const { deletePeition } = store.adminStore;
+  const { getPetitionDetail, PetitionDetailData, deletePetition, answerToPetition, blindPetition, writePetitionComment, getPetitionFeed, allowedPetitions, updatePetitionAnswer} = store.petitionStore;
+
   const { modal } = store.dialog;
   const [detailData, setDetailData] = useState({});
   const [commentContents, setCommentContents] = useState('');
+  const [answerContents, setAnswerContents] = useState('');
   const [sideAllowedPetition, setSideAllowedPetition] = useState([]);
   const [adminAuth, setAdminAuth] = useState(false);
 
@@ -25,33 +26,44 @@ const PetitionDetailContainer = ({ store, history }) => {
 
   const userInfo = ls.get('user-info');
 
-  const handleAllowPetition = async (idx) => {
+
+  const handleAnswerPetitionUpdate = async (idx) => {
+    if (answerContents.length === 0) {
+      await modal({
+        title: 'Warning!',
+        stateType: 'warning',
+        contents: '글을 작성해 주세요.',
+      });
+
+      return;
+    }
 
     const data = {
-      idx,
+      petitionIdx: idx,
+      contents: answerContents,
     };
 
     await modal({
       modalType: 'basic',
       title: 'Warning!',
-      contents: '해당 청원 글을 승인 처리하시겠습니까?',
+      contents: '해당 청원 글의 답변을 수정하시겠습니까?',
       confirmFunc: async () => {
-        await allowPetition(data).
+        await updatePetitionAnswer(data).
           then((response) => {
             modal({
               title: 'Success!',
               stateType: 'success',
-              contents: '청원이 성공적으로 승인 처리되었습니다.',
+              contents: '답변을 수정 하였습니다.',
             });
           })
           .catch((error) => {
             const { status } = error.response;
 
-            if (status === 405) {
+            if (status === 400) {
               modal({
                 title: 'Error!',
                 stateType: 'error',
-                contents: '이미 승인 처리 된 청원입니다.'
+                contents: '양식을 확인해 주세요.'
               });
     
               return;
@@ -62,6 +74,83 @@ const PetitionDetailContainer = ({ store, history }) => {
                 title: 'Error!',
                 stateType: 'error',
                 contents: '권한 없음!'
+              });
+    
+              return;
+            }
+    
+            if (status === 500) {
+              modal({
+                title: 'Error!',
+                stateType: 'error',
+                contents: '서버 에러! 조금만 기다려 주세요. (__)'
+              });
+    
+              return;
+            }
+          });
+      }
+    });
+  }
+
+  const handleAnswerPetition = async (idx) => {
+
+    if (answerContents.length === 0) {
+      await modal({
+        title: 'Warning!',
+        stateType: 'warning',
+        contents: '글을 작성해 주세요.',
+      });
+
+      return;
+    }
+
+    const data = {
+      petitionIdx: idx,
+      contents: answerContents,
+    };
+
+    await modal({
+      modalType: 'basic',
+      title: 'Warning!',
+      contents: '해당 청원 글에 대해 답변 처리하시겠습니까?',
+      confirmFunc: async () => {
+        await answerToPetition(data).
+          then((response) => {
+            modal({
+              title: 'Success!',
+              stateType: 'success',
+              contents: '답변을 작성 하였습니다.',
+            });
+          })
+          .catch((error) => {
+            const { status } = error.response;
+
+            if (status === 400) {
+              modal({
+                title: 'Error!',
+                stateType: 'error',
+                contents: '양식을 확인해 주세요.'
+              });
+    
+              return;
+            }
+
+            if (status === 403) {
+              modal({
+                title: 'Error!',
+                stateType: 'error',
+                contents: '권한 없음!'
+              });
+    
+              return;
+            }
+
+            if (status === 405) {
+              modal({
+                title: 'Error!',
+                stateType: 'error',
+                contents: '이미 답변 처리 된 청원입니다.'
               });
     
               return;
@@ -317,6 +406,9 @@ const PetitionDetailContainer = ({ store, history }) => {
   useEffect(() => {
     setDetailData(PetitionDetailData);
   }, [PetitionDetailData]);
+  const test = () => {
+
+  }
 
   useEffect(() => {
     if (allowedPetitions) {
@@ -332,13 +424,15 @@ const PetitionDetailContainer = ({ store, history }) => {
     <PetitionDetailTemplate
       detailData={detailData}
       commentContentsObj = {GroupingState('commentContents', commentContents, setCommentContents)}
+      answerContentsObj = {GroupingState('answerContents', answerContents, setAnswerContents)}
       handleWriteCommentFunc = {handleWriteComment}
+      handleAnswerPetitionUpdate = {handleAnswerPetitionUpdate}
       handlePetitionDelete={handlePetitionDelete}
       handleWritePagePath={handleWritePagePath}
       sideAllowedPetition={sideAllowedPetition}
       adminAuth={adminAuth}
       handleBlindPetition={handleBlindPetition}
-      handleAllowPetition={handleAllowPetition}
+      handleAnswerPetition={handleAnswerPetition}
     />
   );
 };

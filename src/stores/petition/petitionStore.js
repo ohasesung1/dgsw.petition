@@ -169,10 +169,25 @@ class petitionStore {
     }
   }
 
-  @action
-  async allowPetition (request) { //  청원 상세조회 후  Repository 함수를 통해 저장
+  async answerToPetition (request) { //  청원 상세조회 후  Repository 함수를 통해 저장
     try {
-      const response = await petitionRepository.allowPetition(request);
+      const response = await petitionRepository.answerToPetition(request);
+
+      return new Promise((resolve, reject) => { // resonse 비동기 처리
+        resolve(response);
+      });
+    } catch (error) {
+      console.error(error);
+      
+      return new Promise((resolve, reject) => { // 에러 catch
+        reject(error);
+      });
+    }
+  }
+
+  async updatePetitionAnswer (request) { //  청원 상세조회 후  Repository 함수를 통해 저장
+    try {
+      const response = await petitionRepository.updatePetitionAnswer(request);
 
       return new Promise((resolve, reject) => { // resonse 비동기 처리
         resolve(response);
