@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5895c1f2fdbe32df7e88683df1cfd68b",
+    "revision": "9d5525f22d62f2d02a5425d951f55847",
     "url": "/dgsw.petition/index.html"
   },
   {
-    "revision": "3d59130f96342ca8bca0",
+    "revision": "230f91a87b8cdf2c8c80",
     "url": "/dgsw.petition/static/css/main.cea280b8.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/dgsw.petition/static/js/2.4de82217.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "3d59130f96342ca8bca0",
-    "url": "/dgsw.petition/static/js/main.af66ac38.chunk.js"
+    "revision": "230f91a87b8cdf2c8c80",
+    "url": "/dgsw.petition/static/js/main.f45c88af.chunk.js"
   },
   {
     "revision": "cce79dfee54e40fae0e7",
