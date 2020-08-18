@@ -9,7 +9,7 @@ const cx = classNames.bind(style);
 const StudentCouncilTemplate = ({ petitions, type, handleType, studentPetitionItemIndex }) => {
 
   if (type === 'waiting') {
-    type = '투표율 60%';
+    type = '투표수 50 이상 청원';
   } else if (type === 'blind') {
     type = '블라인드 처리된';
   }
@@ -24,7 +24,7 @@ const StudentCouncilTemplate = ({ petitions, type, handleType, studentPetitionIt
               {
                 <>
                     <div className={cx('StudentCouncilTemplate-header-title-categoryDiv-buttonDiv')}>
-                      <button className={cx('StudentCouncilTemplate-header-title-categoryDiv-buttonDiv-NotAllowButton', { 'selectButtonStyle': type === '투표율 60%' })} onClick={() => handleType('waiting')}>승인 <br/>검토 중 청원</button>
+                      <button className={cx('StudentCouncilTemplate-header-title-categoryDiv-buttonDiv-NotAllowButton', { 'selectButtonStyle': type === '투표수 50 이상 청원' })} onClick={() => handleType('waiting')}>답변 <br/>검토 중 청원</button>
                       <button className={cx('StudentCouncilTemplate-header-title-categoryDiv-buttonDiv-blindButton', { 'selectButtonStyle': type === '블라인드 처리된' })} onClick={() => handleType('blind')}>블라인드<br/> 처리 된 청원</button>
                     </div>
                 </>
