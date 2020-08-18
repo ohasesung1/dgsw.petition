@@ -65,7 +65,7 @@ const SignUpTemplate = ({
       </div>
       <div className={cx('SignUpTemplate-userIdDiv')}>
         <div className={cx('SignUpTemplate-userIdDiv-inputDiv')}>
-          <input className={cx('SignUpTemplate-userIdDiv-inputDiv-input')} value={id} onChange={(e) => setId(e.target.value)}/>
+          <input className={cx('SignUpTemplate-userIdDiv-inputDiv-input')} value={id} onChange={(e) => setId(e.target.value)} placeholder="ID"/>
         </div>
         <span>@dgsw.hs.kr</span>
         <div className={cx('SignUpTemplate-userIdDiv-buttonDiv')}>
@@ -90,7 +90,7 @@ const SignUpTemplate = ({
       <div className={cx('SignUpTemplate-nameInfoDiv')}>
       <span>이름</span>
         <div className={cx('SignUpTemplate-nameInfoDiv-inputDiv')}>
-          <input className={cx('SignUpTemplate-nameInfoDiv-inputDiv-input')} value={name} onChange={(e) => setName(e.target.value)}/>
+          <input className={cx('SignUpTemplate-nameInfoDiv-inputDiv-input')} value={name} onChange={(e) => setName(e.target.value)} placeholder="*꼭 실명으로 기재 해주세요."/>
         </div>
       </div>
       <div className={cx('SignUpTemplate-userPwDiv')}>

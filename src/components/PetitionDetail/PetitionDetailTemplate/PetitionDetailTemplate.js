@@ -34,11 +34,12 @@ const PetitionDetailTemplate = ({
   const [commentArray, setCommentArray] = useState([]);
 
   let memberIdLength;
+  let isAllowedStr = "";
   
   if (isAllowed === 0) {
-    isAllowed = '답변 대기 중';
+    isAllowedStr = '답변 대기 중';
   } else if (isAllowed === 1) {
-    isAllowed = '답변 완료';
+    isAllowedStr = '답변 완료';
   }
   if (id) {
     id = id.split('@');
@@ -53,8 +54,11 @@ useEffect(() => {
     setCommentArray(comment.map((item) => <PetitionCommentItem key={item.idx} item={item}/>));
   }
 
-  if (answer) {
+  if (answer && isAllowed) {
+    setAnswerContents("");
     setAnswerContents(answer.contents);
+  } else if (!isAllowed) {
+    setAnswerContents("");
   }
 }, [comment, answer]);
   
@@ -63,7 +67,7 @@ useEffect(() => {
       <div className={cx('PetitionDetailTemplate-contentsDiv')}>
         <div className={cx('PetitionDetailTemplate-contentsDiv-titleDiv')}>
           <div className={cx('PetitionDetailTemplate-contentsDiv-titleDiv-guideDiv')}>
-            <span>- 청원 {isAllowed} -</span>
+            <span>- 청원 {isAllowedStr} -</span>
           </div>
           <div className={cx('PetitionDetailTemplate-contentsDiv-titleDiv-title')}>
             <span>{title}</span>
@@ -79,7 +83,7 @@ useEffect(() => {
               <span>청원 등록일: {joinDateFormat}</span>
             </div>
             <div className={cx('PetitionDetailTemplate-contentsDiv-titleDiv-infoDiv-categoryDiv')}>
-              <span>청원 처리 상태: {isAllowed}</span>
+              <span>청원 처리 상태: {isAllowedStr}</span>
             </div>
             <div className={cx('PetitionDetailTemplate-contentsDiv-titleDiv-infoDiv-categoryDiv')}>
               <span>청원인: {memberIdLength}</span>
@@ -95,13 +99,13 @@ useEffect(() => {
               </div>
               <div className={cx('PetitionDetailTemplate-contentsDiv-titleDiv-statusDiv-graph-start')}>
               <div className={cx('PetitionDetailTemplate-contentsDiv-titleDiv-statusDiv-graph-start-iconDiv')}>
-                  <BsFillCircleFill className={cx('PetitionDetailTemplate-contentsDiv-titleDiv-statusDiv-graph-start-iconDiv-icon', {'statusColor': isAllowed === '답변 대기 중'})}/>
+                  <BsFillCircleFill className={cx('PetitionDetailTemplate-contentsDiv-titleDiv-statusDiv-graph-start-iconDiv-icon', {'statusColor': isAllowed === 0})}/>
                 </div>
                 <span>답변 대기 중</span>
               </div>
               <div className={cx('PetitionDetailTemplate-contentsDiv-titleDiv-statusDiv-graph-start')}>
               <div className={cx('PetitionDetailTemplate-contentsDiv-titleDiv-statusDiv-graph-start-iconDiv')}>
-                  <BsFillCircleFill className={cx('PetitionDetailTemplate-contentsDiv-titleDiv-statusDiv-graph-start-iconDiv-icon', {'statusColor': isAllowed === '답변 완료'})}/>
+                  <BsFillCircleFill className={cx('PetitionDetailTemplate-contentsDiv-titleDiv-statusDiv-graph-start-iconDiv-icon', {'statusColor': isAllowed === 1})}/>
                 </div>
                 <span>답변 완료</span>
               </div>
@@ -147,7 +151,7 @@ useEffect(() => {
                     <div className={cx('PetitionDetailTemplate-answerFormWrap-answerFormHeader')}>
                       청원 답변
                     </div>
-                    <div className={cx('PetitionDetailTemplate-answerFormWrap-answerInput')}>{answer.contents}</div>
+                    <pre className={cx('PetitionDetailTemplate-answerFormWrap-answerInput')}>{answer.contents}</pre>
                   </div>
                 </>
                 : <></>

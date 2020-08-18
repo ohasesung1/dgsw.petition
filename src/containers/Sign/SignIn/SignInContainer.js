@@ -13,7 +13,7 @@ const SignInContainer = ({ store, history, setIsSignUp, setIsLogin }) => {
 
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
-  const [isSesstion, setIsSesstion] = useState(false);
+  const [isSesstion, setIsSesstion] = useState(true);
 
   const guestLogin = async () => {
     localStorage.removeItem('petition-token');
