@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import AdminItem from 'components/Admin/AdminItem';
 import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
+import RefreshToken from 'lib/Token/RefreshToken';
 
 const AdminItemContainer = ({ store, index, item }) => {
 
@@ -47,6 +48,12 @@ const AdminItemContainer = ({ store, index, item }) => {
           });
 
           return;
+        }
+
+        if (status === 410) {
+          RefreshToken(modal, status, () => {
+            deleteAuth(data);
+          });
         }
 
         if (status === 500) {

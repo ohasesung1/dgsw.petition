@@ -45,10 +45,12 @@ const SignInContainer = ({ store, history, setIsSignUp, setIsLogin }) => {
 
     await handleSignIn(data).
       then(async (response) => {
-        if (isSesstion) {
+        if (!isSesstion) {
           localStorage.setItem('petition-token', response.data.tokenData);
+          localStorage.setItem('petition-reToken', response.data.refreshTokenData);
         } else {
           sessionStorage.setItem('petition-token',response.data.tokenData);
+          sessionStorage.setItem('petition-reToken', response.data.refreshTokenData);
         }
 
         const ls = new SecureLS({ encodingType: 'aes' }); // user info 저장

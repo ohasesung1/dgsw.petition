@@ -9,13 +9,15 @@ const cx = classNames.bind(style);
 
 const PetitionCommentItem = ({ item }) => {
   
-  const { id, contents,joinDate } = item;
+  const { contents,joinDate } = item;
+  let { id } = item;
 
   let memberIdLength;
 
   if (id) {
-    memberIdLength = id[0];
-    for (let i = 1; i < id.length; i++) {
+    id = id.split('@');
+    memberIdLength = id[0][0];
+    for (let i = 1; i < id[0].length; i++) {
       memberIdLength += '*';
     };
   }

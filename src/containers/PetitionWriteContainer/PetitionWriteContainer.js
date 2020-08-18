@@ -5,6 +5,7 @@ import { inject, observer } from 'mobx-react';
 import GroupingState from 'lib/HookState/GroupingState';
 import { Prompt } from 'react-router';
 import PropTypes from 'prop-types';
+import RefreshToken from 'lib/Token/RefreshToken';
 
 const PetitionWriteContainer = ({ store, history }) => {
   const { writePetition } = store.petitionStore; // 청원 작성 서버 요청 함수
@@ -134,6 +135,12 @@ const PetitionWriteContainer = ({ store, history }) => {
           });
 
           return;
+        }
+
+        if (status === 410) {
+          RefreshToken(modal, status, () => {
+            writePetition(data);
+          });
         }
 
         if (status === 500) {

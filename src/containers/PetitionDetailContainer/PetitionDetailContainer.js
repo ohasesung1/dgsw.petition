@@ -8,6 +8,7 @@ import SecureLS from 'secure-ls';
 import SideAllowedPetitionItem from 'components/PetitionDetail/SideAllowedPetitionItem/SideAllowedPetitionItem';
 import GroupingState from 'lib/HookState/GroupingState';
 import TokenVerification from 'lib/Token/TokenVerification';
+import RefreshToken from 'lib/Token/RefreshToken';
 
 const PetitionDetailContainer = ({ store, history }) => {
   const { getPetitionDetail, PetitionDetailData, deletePetition, answerToPetition, blindPetition, writePetitionComment, getPetitionFeed, allowedPetitions, updatePetitionAnswer} = store.petitionStore;
@@ -77,6 +78,12 @@ const PetitionDetailContainer = ({ store, history }) => {
               });
     
               return;
+            }
+
+            if (status === 410) {
+              RefreshToken(modal, status, () => {
+                updatePetitionAnswer(data);
+              });
             }
     
             if (status === 500) {
@@ -155,6 +162,12 @@ const PetitionDetailContainer = ({ store, history }) => {
     
               return;
             }
+
+            if (status === 410) {
+              RefreshToken(modal, status, () => {
+                answerToPetition(data);
+              });
+            }
     
             if (status === 500) {
               modal({
@@ -208,6 +221,12 @@ const PetitionDetailContainer = ({ store, history }) => {
               });
     
               return;
+            }
+
+            if (status === 410) {
+              RefreshToken(modal, status, () => {
+                blindPetition(data);
+              });
             }
     
             if (status === 500) {
@@ -267,6 +286,12 @@ const PetitionDetailContainer = ({ store, history }) => {
               });
     
               return;
+            }
+
+            if (status === 410) {
+              RefreshToken(modal, status, () => {
+                deletePetition(idx);
+              });
             }
     
             if (status === 500) {
@@ -375,6 +400,12 @@ const PetitionDetailContainer = ({ store, history }) => {
           });
     
           return;
+        }
+
+        if (status === 410) {
+          RefreshToken(modal, status, () => {
+            writePetitionComment(data);
+          });
         }
 
 
